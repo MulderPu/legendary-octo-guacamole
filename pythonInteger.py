@@ -1,3 +1,7 @@
+#Write a Python program that accepts an integer (n) and computes the value of n + nn + nnn + nnnn.
+#Sample value of n is 5.
+#Expected Result: 6170
+
 user_input = input('Please enter an integer: ')
 
 try:
