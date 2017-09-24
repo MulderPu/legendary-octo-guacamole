@@ -1,5 +1,3 @@
-import sys
-
 def calculate_vegetable_category(broccoli=0, cabbage=0, french_bean=0):
     broccoli_price = float(0.8)
     cabbage_price = float(0.65)
