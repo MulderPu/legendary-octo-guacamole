@@ -49,3 +49,16 @@ def validateNoOfPeople(people):
         return int(people)
     return -1
 
+'''
+Validate phone number
+Must equal 10
+Must not empty
+Must be digit
+'''
+def validatePhoneNumber(number):
+    if (number.isdigit()) and (len(number) == 10) and (number != ''):
+        return number
+    return -1
+
+def validateVenue(choice, venueList, noPeople):
+    return False
