@@ -1,0 +1,6 @@
+VIP Room,      10,   250
+Executive Room,30,   500
+Pool Site,     50,   850
+Banquet Hall,  200,  1000
+Chamber Hall,  500,  2000
+Concert Hall,  1000, 3500
