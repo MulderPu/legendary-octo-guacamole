@@ -60,5 +60,51 @@ def validatePhoneNumber(number):
         return number
     return -1
 
+'''
+Validate if venue selected can fit in the number of people
+'''
 def validateVenue(choice, venueList, noPeople):
+    i = choice-1
+    max_capacity = venueList[i]['max']
+    if( int(noPeople) < int(max_capacity)):
+        return True
     return False
+
+'''
+Read file and return data in list
+'''
+def readItemList(textFile):
+    list = []
+    with open(textFile,"r") as text:
+        for line in text:
+            if line.strip('\n') != '':
+                list.append(line.strip('\n'))
+    return list
+
+'''
+Calculate total tables needed based on number of people
+'''
+def calculateTableTotal(noPeople):
+    table_count = 0
+    remainding = int(noPeople % 10)
+    table_count = int(noPeople / 10)
+    if remainding < 6 and table_count > 1:
+        table_count -= 1
+    return table_count
+
+'''
+Calculate venue price based on venue chosen
+'''
+def calculateVenuePrice(venueChoice):
+    list = [{'name': 'VIP ROOM (10 persons)', 'cost': 'FREE'},
+            {'name': 'Executive Room (30 persons)', 'cost': 'FREE'},
+            {'name': 'Pool site (50 persons)', 'cost': '800.00'},
+            {'name': 'Banquet Hall (200 persons)', 'cost': '1000.00'},
+            {'name': 'Chamber Hall (500 persons)', 'cost': '1500.00'},
+            {'name': 'Concert Hall (1000 persons)', 'cost': '1800.00'}
+            ]
+    for i in range(len(list)):
+        if venueChoice-1 == i:
+            return list[i]
+    return []
+
