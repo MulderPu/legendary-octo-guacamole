@@ -91,7 +91,6 @@ list_entertainment = []
 for i in entertainmentList:
     available =  i['Availability'].lower().split(',')
     for j in available:
-        print(j)
         if name.lower() in j:
             list_entertainment.append(i['entertainments'])
-printEntertainment(1, list_entertainment, venueList)
+#printEntertainment(1, list_entertainment, venueList)

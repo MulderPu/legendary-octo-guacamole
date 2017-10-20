@@ -47,7 +47,7 @@ Must < 1000
 @return {int}        
 '''
 def validateNoOfPeople(people):
-    if (people.isdigit()) and (int(people) > 1) and (int(people) < 1000):
+    if (people.isdigit()) and (int(people) > 0) and (int(people) < 1000):
         return int(people)
     return -1
 
@@ -66,7 +66,7 @@ def validatePhoneNumber(number):
 Validate if venue selected can fit in the number of people
 '''
 def validateVenue(choice, venueList, noPeople):
-    i = choice-1
+    i = int(choice)-1
     max_capacity = venueList[i]['max']
     if( int(noPeople) < int(max_capacity)):
         return True
