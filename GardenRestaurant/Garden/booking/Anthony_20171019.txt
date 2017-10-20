@@ -1,0 +1,12 @@
+Your reservation has been confirmed.
+------------------------------------
+Booking Summary
+------------------------------------
+Customer Name: Anthony
+Contact Number: 1
+No of People: 10
+Tables: 1
+Venue: a
+Package: a
+Add on: a
+Total Price: 1234

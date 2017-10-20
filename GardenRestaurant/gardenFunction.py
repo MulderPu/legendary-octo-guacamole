@@ -1,3 +1,5 @@
+import datetime
+
 '''
 Get list of data from text file
 
@@ -107,4 +109,82 @@ def calculateVenuePrice(venueChoice):
         if venueChoice-1 == i:
             return list[i]
     return []
+
+'''
+Calculate the total menu price based on the choice and number of table
+'''
+def calculateMenuPrice(totalTable, choice):
+    list = [
+        {'name': 'Menu 1', 'cost' : '768.88'},
+        {'name': 'Menu 2', 'cost' : '898.88'},
+        {'name': 'Menu 3', 'cost' : '1118.88'},
+        {'name': 'Menu 4', 'cost' : '1488.88'}
+    ]
+
+    price = 0
+    menu = ''
+    for i in range(len(list)):
+        if choice-1 == i:
+            price = list[i]['cost']
+            menu = list[i]['name']
+    total_menu_price = int(totalTable) * float(price)
+    print(total_menu_price)
+    print(menu)
+    
+    return {'total_price': total_menu_price, 'selected_menu': menu}
+
+    
+'''
+Calculate entertainments price
+'''
+def calculateEntertainment(choice, venueChoice):
+    list = [
+        {'entertainments':'Synchronised Swimming Dance', 'Availability':'Pool', 'cost':'2000'},
+        {'entertainments':'Clown Performance', 'Availability':'Pool , Banquet Hall, Chamber Hall, Concert Hall', 'cost':'250'},
+        {'entertainments':'Magic Performance', 'Availability':'Pool, Banquet Hall, Chamber Hall, Concert Hall', 'cost':'450'},
+        {'entertainments':'House Dance Performance', 'Availability':'Banquet Hall, Chamber Hall, Concert Hall', 'cost':'1000'},
+        {'entertainments':'Live Band Performance', 'Availability':'Banquet Hall, Chamber Hall, Concert Hall', 'cost':'1500'},
+    ]
+
+    cost=0
+    entertainments=''
+    for i in range(len(list)):
+        if choice-1 == i:
+            cost=list[i]['cost']
+            entertainments = list[i]['entertainments']
+
+    return {'price':cost, 'entertainments':entertainments}
+
+
+'''
+Calculate total price
+'''
+def calculateTotalPrice(venuePrice, menuPrice, entertainmentPrice):
+    return int(venuePrice)+int(menuPrice)+int(entertainmentPrice)
+
+'''
+Save booking details into text file
+'''
+def booking(custName,custNo,noPeople,totalTable,strVenue,strMenu,strEntertainment, total):
+    #today date
+    now = datetime.datetime.now()
+    todayDate= now.strftime("%Y%m%d")
+    
+    #file name
+    filename = 'Garden/booking/'+custName + '_' + todayDate+'.txt'
+    with open(filename, "w") as text_file:
+        text_file.write("Your reservation has been confirmed.")
+        
+        text_file.write("\n------------------------------------")
+        text_file.write("\nBooking Summary")
+        text_file.write("\n------------------------------------")
+
+        text_file.write("\nCustomer Name: %s" % (custName))
+        text_file.write("\nContact Number: %s" % (custNo))
+        text_file.write("\nNo of People: %s" % (noPeople))
+        text_file.write("\nTables: %s" % (totalTable))
+        text_file.write("\nVenue: %s" % (strVenue))
+        text_file.write("\nPackage: %s" % (strMenu))
+        text_file.write("\nAdd on: %s" % (strEntertainment))
+        text_file.write("\nTotal Price: %s" % (total))
 
