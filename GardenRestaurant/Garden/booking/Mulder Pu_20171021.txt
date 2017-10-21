@@ -1,0 +1,12 @@
+Your reservation has been confirmed.
+------------------------------------
+Booking Summary
+------------------------------------
+Customer Name: Mulder Pu
+Contact Number: 0123456789
+No of People: 20
+Tables: 1
+Venue: Pool site (50 persons)
+Package: Menu 4
+Add on: Synchronised Swimming Dance
+Total Price: 4288.88

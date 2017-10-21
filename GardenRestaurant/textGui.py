@@ -65,32 +65,71 @@ def printPackage(menuList):
         count = i + 1
         print(str(count)+' . '+list[i])
 
-    result = input('Is the selected menu okay? \n[1] Yes\n[2] No, I want to reselect my menu\n')
-    if(result == '2'):
-        return False
-    else:
-        return True
+    print('\nIs the selected menu okay? \n[1] Yes\n[2] No, I want to reselect my menu\n')
 
+    flag=1
+    while (flag):
+        result = input('Please select a choice:')
+        if result in ['1','2']:
+            if result == '1':
+                flag=0
+                return True
+            else:
+                flag=0
+                return False
+        else:
+            print('Invalid choice.')
 
+'''
+Print entertainment list based on venue choices
+'''
 def printEntertainment(venueChoice,entertainmentList,venueList):
-    print('Entertainment for Pool Site')
-    print(entertainmentList)
+    venue_name = venueList[int(venueChoice)-1]['name']
+    name_list = venue_name.split(' ')
+    first_venue_name =name_list[0]
+    entertain_list = []
+    
+    for item in entertainmentList:
+        entertain_available = item['Availability']
+        if first_venue_name in entertain_available:
+            entertain_list.append(item['entertainments'])
 
+    if len(entertain_list) != 0:
+        print('\nEntertainment for %s' % venue_name)
+        count=1
+        select_list = []
+        for i in entertain_list:
+            print(' %s %s' % (count,i))
+            select_list.append(str(count))
+            count += 1
 
-venueList = gardenFunction.calculateVenuePrice(4)
-entertainmentList= [
-        {'entertainments':'Synchronised Swimming Dance', 'Availability':'Pool', 'cost':'2000'},
-        {'entertainments':'Clown Performance', 'Availability':'Pool , Banquet Hall, Chamber Hall, Concert Hall', 'cost':'250'},
-        {'entertainments':'Magic Performance', 'Availability':'Pool, Banquet Hall, Chamber Hall, Concert Hall', 'cost':'450'},
-        {'entertainments':'House Dance Performance', 'Availability':'Banquet Hall, Chamber Hall, Concert Hall', 'cost':'1000'},
-        {'entertainments':'Live Band Performance', 'Availability':'Banquet Hall, Chamber Hall, Concert Hall', 'cost':'1500'},
-    ]
-list_name = venueList['name'].split(' ')
-name = list_name[0]
-list_entertainment = []
-for i in entertainmentList:
-    available =  i['Availability'].lower().split(',')
-    for j in available:
-        if name.lower() in j:
-            list_entertainment.append(i['entertainments'])
-#printEntertainment(1, list_entertainment, venueList)
+        flag=1
+        while (flag):
+            choice = input('Please select choice:')
+            if choice in select_list:
+                return choice
+                flag=0
+            else:
+                print('Invalid choice.')
+    else:
+        print('\nNo entertainment available for this venue.')
+        return None
+
+'''
+Print Total Summary
+'''
+def printSummaryTotal (custName, contNum, numPeople, totalTable,
+                       totalPrice, strVenue, strMenu,strEntertainment):
+    print('Your reservation has been confirmed.')
+    print("-"*30)
+    print('Booking Summary')
+    print("-"*30)
+    print('Customer Name : %s' % custName)
+    print('Contact Number: %s' % contNum)
+    print('No of People  : %s' % numPeople)
+    print('Tables        : %s' % totalTable)
+    print('Venue         : %s' % strVenue)
+    print('Package       : %s' % strMenu)
+    print('Add on        : %s' % strEntertainment)
+    print()
+    print('Total Price   : %s' % totalPrice)

@@ -87,6 +87,7 @@ def readItemList(textFile):
 Calculate total tables needed based on number of people
 '''
 def calculateTableTotal(noPeople):
+    noPeople = int(noPeople)
     table_count = 0
     remainding = int(noPeople % 10)
     table_count = int(noPeople / 10)
@@ -106,7 +107,7 @@ def calculateVenuePrice(venueChoice):
             {'name': 'Concert Hall (1000 persons)', 'cost': '1800.00'}
             ]
     for i in range(len(list)):
-        if venueChoice-1 == i:
+        if int(venueChoice)-1 == i:
             return list[i]
     return []
 
@@ -124,12 +125,10 @@ def calculateMenuPrice(totalTable, choice):
     price = 0
     menu = ''
     for i in range(len(list)):
-        if choice-1 == i:
+        if int(choice)-1 == i:
             price = list[i]['cost']
             menu = list[i]['name']
     total_menu_price = int(totalTable) * float(price)
-    print(total_menu_price)
-    print(menu)
     
     return {'total_price': total_menu_price, 'selected_menu': menu}
 
@@ -146,21 +145,29 @@ def calculateEntertainment(choice, venueChoice):
         {'entertainments':'Live Band Performance', 'Availability':'Banquet Hall, Chamber Hall, Concert Hall', 'cost':'1500'},
     ]
 
-    cost=0
-    entertainments=''
-    for i in range(len(list)):
-        if choice-1 == i:
-            cost=list[i]['cost']
-            entertainments = list[i]['entertainments']
-
-    return {'price':cost, 'entertainments':entertainments}
-
+    filename = "Garden/venue.txt"
+    venueList = readVenueList(filename)
+    venue_name = venueList[int(venueChoice)-1]['name']
+    name_list = venue_name.split(' ')
+    first_venue_name =name_list[0]
+    entertain_list = []
+    
+    for item in list:
+        entertain_available = item['Availability']
+        if first_venue_name in entertain_available:
+            entertain_list.append(item['entertainments'])
+    
+    selected_entertainment = entertain_list[int(choice)-1]
+    for i in list:
+        if selected_entertainment == i['entertainments']:
+            return {'price':i['cost'], 'entertainments':i['entertainments']}
+            
 
 '''
 Calculate total price
 '''
 def calculateTotalPrice(venuePrice, menuPrice, entertainmentPrice):
-    return int(venuePrice)+int(menuPrice)+int(entertainmentPrice)
+    return float(venuePrice)+float(menuPrice)+float(entertainmentPrice)
 
 '''
 Save booking details into text file

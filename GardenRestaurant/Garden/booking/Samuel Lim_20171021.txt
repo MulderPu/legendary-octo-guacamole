@@ -1,0 +1,12 @@
+Your reservation has been confirmed.
+------------------------------------
+Booking Summary
+------------------------------------
+Customer Name: Samuel Lim
+Contact Number: 1234567890
+No of People: 20
+Tables: 1
+Venue: Executive Room (30 persons)
+Package: Menu 2
+Add on: -
+Total Price: 898.88

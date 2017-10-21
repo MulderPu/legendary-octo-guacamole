@@ -1,0 +1,12 @@
+Your reservation has been confirmed.
+------------------------------------
+Booking Summary
+------------------------------------
+Customer Name: Micheal lee
+Contact Number: 1231231231
+No of People: 150
+Tables: 14
+Venue: Banquet Hall (200 persons)
+Package: Menu 4
+Add on: Live Band Performance
+Total Price: 23344.32
