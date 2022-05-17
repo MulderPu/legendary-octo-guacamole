@@ -4,6 +4,7 @@ from typing import List
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
         i = 0
+        # check if not same value, dont re-assign
         for item in nums:
             # check not val, then put item back in
             if item != val:

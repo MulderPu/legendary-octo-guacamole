@@ -4,6 +4,8 @@ from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         i = 0
+
+        # reassign number if bigger than previous value
         for item in nums:
             if i == 0:
                 nums[i] = item
